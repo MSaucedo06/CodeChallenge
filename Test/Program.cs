@@ -10,6 +10,9 @@ class Program
         hamming();
         wordCount();
         countNumbers();
+        basicQueriesLINQ();
+        Console.WriteLine(codere(6, 11, 2));
+        Bubble();
     }    
 
     //1.- Invertir Cadena
@@ -94,5 +97,47 @@ class Program
         int n = regex.Matches(text).Count();
 
         Console.WriteLine("Numeros en la cadena: " + n);
+    }
+
+    static void basicQueriesLINQ()
+    {
+        int[] numbers = {1,2,3,4,5,6,7,8,9,0};
+
+        var numQuery = from num in numbers
+                       where num > 0 && (num % 2) == 0
+                       orderby num descending
+                       select num;
+        foreach(int num in numQuery)
+        {
+            Console.WriteLine("{0,1} ", num);
+        }
+    }
+
+    static int codere(int A, int B, int  K)
+    {
+        if (A % K == 0)
+        {
+            return (B - A); // K + 1
+        }
+        if (A % K > 0)
+        {
+            return (B - (A - A % K)); // K
+        }
+        else
+            return 0;
+    }
+
+    static void Bubble()
+    {
+        int[] array = { 4, 1, 3, 9, 7 };
+
+        var result = from num in array
+                     orderby num ascending
+                     select num;
+
+        foreach (int num in result)
+        {
+            Console.WriteLine("{0,1} ", num);
+        }
     }
 }
